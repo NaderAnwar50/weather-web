@@ -4,20 +4,17 @@ const weatherBox = document.querySelector(".weather-box");
 const notFound = document.querySelector(".not-found");
 const searchContainer = document.querySelector(".search-container");
 
-// API key - you'll need to get this from OpenWeatherMap
 const APIKey = config.apiKey;
 
-// Add event listener for search button
 searchBtn.addEventListener("click", () => {
   const city = inputBox.value.trim();
   if (city === "") {
     return;
   }
-  // Function to fetch weather data will go here
+
   checkWeather(city);
 });
 
-// Add event listener for Enter key
 inputBox.addEventListener("keydown", (event) => {
   if (event.key === "Enter") {
     const city = inputBox.value.trim();
@@ -29,16 +26,16 @@ inputBox.addEventListener("keydown", (event) => {
 });
 
 function checkWeather(city) {
-  console.log("Searching for:", city); // Debug line
+  console.log("Searching for:", city);
 
   fetch(
     `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${APIKey}&units=metric`
   )
     .then((response) => {
-      console.log("Response status:", response.status); // Debug line
+      console.log("Response status:", response.status);
 
       if (response.status === 404) {
-        console.log("City not found"); // Debug line
+        console.log("City not found");
         // Hide search prompt and weather box, show error
         document.querySelector(".search-prompt").style.display = "none";
         weatherBox.style.display = "none";
@@ -50,14 +47,12 @@ function checkWeather(city) {
     .then((data) => {
       if (!data) return;
 
-      console.log("Weather data received:", data); // Debug line
+      console.log("Weather data received:", data);
 
-      // Hide search prompt and error, show weather
       document.querySelector(".search-prompt").style.display = "none";
       notFound.style.display = "none";
       weatherBox.style.display = "block";
 
-      // Fix the selectors to match your HTML structure
       const image = document.querySelector(".weather-box .weather-icon");
       const temperature = document.querySelector(".weather-box .temperature");
       const description = document.querySelector(".weather-box .description");
@@ -67,7 +62,6 @@ function checkWeather(city) {
       );
       const wind = document.querySelector(".weather-details .wind .text span");
 
-      // Update weather data
       switch (data.weather[0].main) {
         case "Clear":
           image.src = "src/weather/clear.svg";
@@ -103,5 +97,3 @@ function checkWeather(city) {
     });
   inputBox.value = "";
 }
-//this is new
-// Add event listener for Enter key
