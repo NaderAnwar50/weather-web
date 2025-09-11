@@ -97,3 +97,82 @@ function checkWeather(city) {
     });
   inputBox.value = "";
 }
+
+/*
+
+1. Start with DOM Selection
+
+document.querySelector() for single elements
+document.querySelectorAll() for multiple elements
+
+document.querySelector(".search-box input");
+document.querySelector(".search-box button");
+document.querySelector(".weather-box");
+document.querySelector(".not-found");
+document.querySelector(".search-container");
+
+
+2. Event Handling
+
+addEventListener()
+
+addEventListener("click", () => {
+  const city = inputBox.value.trim();
+  if (city === "") {
+    return;
+  }
+
+  checkWeather(city);
+});
+
+addEventListener("keydown", (event) => {
+  if (event.key === "Enter") {
+    const city = inputBox.value.trim();
+    if (city === "") {
+      return;
+    }
+    checkWeather(city);
+  }
+});
+
+3. Basic DOM Manipulation
+
+change text content with .textContent or .innerHTML
+ showing/hiding elements by adding/removing the .active class
+
+4. API Basics
+
+fetch() function for making HTTP requests
+Look into weather APIs async/await or .then() for handling API responses
+
+
+
+
+
+
+
+.search-container - The initial search area (visible by default)
+.weather-box - Main weather display (hidden by default)
+.not-found - Error message (hidden by default)
+.search-city - Fallback message (hidden by default)
+Key Elements to Target:
+Search input: .search-box input
+Search button: .search-box button
+Weather icon: .weather-box .weather-icon
+Temperature: .weather-box .temperature
+Description: .weather-box .description
+Location: .weather-box .location span
+Humidity: .weather-details .humidity .text span
+Wind speed: .weather-details .wind .text span
+Quick Start Pattern:
+Get input value from search box
+Hide search container: remove .active or hide entirely
+Show weather data: add .active to .weather-box
+Or show error: add .active to .not-found
+The CSS Classes You'll Toggle:
+Add .active to show weather sections
+Remove .active to hide sections
+Default state: only search container visible
+
+
+*/
