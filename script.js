@@ -40,10 +40,6 @@ async function checkWeather(city) {
 
     const data = await response.json();
 
-    // Example: show data in console
-    console.log("Weather data received:", data);
-
-    // Show weather info (same as your .then() version)
     document.querySelector(".search-prompt").style.display = "none";
     notFound.style.display = "none";
     weatherBox.style.display = "block";
