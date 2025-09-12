@@ -133,7 +133,8 @@ change text content with .textContent or .innerHTML
 
 4. API Basics
 
-fetch() function for making HTTP requests
+async function
+await fetch() function for making HTTP requests
 Look into weather APIs async/await or .then() for handling API responses
 
 
@@ -155,7 +156,7 @@ Description: .weather-box .description
 Location: .weather-box .location span
 Humidity: .weather-details .humidity .text span
 Wind speed: .weather-details .wind .text span
-Quick Start Pattern:
+--
 Get input value from search box
 Hide search container: remove .active or hide entirely
 Show weather data: add .active to .weather-box
