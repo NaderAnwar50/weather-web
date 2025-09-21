@@ -1,10 +1,27 @@
+let APIKey;
+
+// Get API key from server
+async function getConfig() {
+  try {
+    const response = await fetch("/api/config");
+    const config = await response.json();
+    APIKey = config.apiKey;
+  } catch (error) {
+    console.error("Failed to load configuration:", error);
+  }
+}
+
+// DOM elements
 const inputBox = document.querySelector(".search-box input");
 const searchBtn = document.querySelector(".search-box button");
 const weatherBox = document.querySelector(".weather-box");
 const notFound = document.querySelector(".not-found");
 const searchContainer = document.querySelector(".search-container");
 
-const APIKey = config.apiKey;
+// Initialize when page loads
+document.addEventListener("DOMContentLoaded", async () => {
+  await getConfig();
+});
 
 searchBtn.addEventListener("click", () => {
   const city = inputBox.value.trim();
